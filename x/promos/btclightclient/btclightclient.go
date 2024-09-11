@@ -9,9 +9,10 @@ type BTCHeader []byte
 type BlockHash []byte
 
 type BTCLightBlock struct {
-	height    uint64
-	header    BTCHeader
-	blockHash BlockHash
+	// height    uint64
+	// header    BTCHeader
+	// blockHash BlockHash
+	Data string
 }
 
 type BTCLightClient struct {
