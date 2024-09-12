@@ -3,6 +3,7 @@ package types
 import (
 	cosmostypes "github.com/cosmos/cosmos-sdk/types"
 )
+
 const (
 	// ModuleName defines the module name
 	ModuleName = "promos"
@@ -15,10 +16,9 @@ const (
 )
 
 var (
-	ParamsKey = []byte("p_promos")
+	ParamsKey    = []byte("p_promos")
 	HeaderPrefix = []byte{0x01}
 )
-
 
 func HeaderKey(height uint64) []byte {
 	return cosmostypes.Uint64ToBigEndian(height)

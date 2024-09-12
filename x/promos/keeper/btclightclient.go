@@ -4,14 +4,15 @@ import (
 	"context"
 	btclc "promos/x/promos/btclightclient"
 	"promos/x/promos/types"
-	"github.com/cosmos/cosmos-sdk/runtime"
+
 	"cosmossdk.io/store/prefix"
+	"github.com/cosmos/cosmos-sdk/runtime"
 )
 
 // must call in genesis
 func (k Keeper) InitLightClient(ctx context.Context, height uint64, lightBlock btclc.BTCLightBlock) error {
 	storeApt := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
-	
+
 	store := prefix.NewStore(storeApt, types.HeaderPrefix)
 
 	key := types.HeaderKey(height)
@@ -20,7 +21,6 @@ func (k Keeper) InitLightClient(ctx context.Context, height uint64, lightBlock b
 }
 
 func (k Keeper) UpdateHeader(ctx context.Context, btclc btclc.BTCLightBlock) error {
-	
 	return nil
 }
 

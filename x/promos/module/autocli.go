@@ -17,6 +17,13 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Use:       "params",
 					Short:     "Shows the parameters of the module",
 				},
+				{
+					RpcMethod:      "LastHeader",
+					Use:            "last-header [height]",
+					Short:          "Query last-header",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "height"}},
+				},
+
 				// this line is used by ignite scaffolding # autocli/query
 			},
 		},
@@ -27,6 +34,12 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				{
 					RpcMethod: "UpdateParams",
 					Skip:      true, // skipped because authority gated
+				},
+				{
+					RpcMethod:      "InitLightClient",
+					Use:            "init-light-client [height] [light-block]",
+					Short:          "Send a init-light-client tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "height"}, {ProtoField: "lightBlock"}},
 				},
 				// this line is used by ignite scaffolding # autocli/tx
 			},

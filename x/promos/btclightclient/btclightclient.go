@@ -20,7 +20,7 @@ type BTCLightClient struct {
 	latestBlock BTCLightBlock
 }
 
-func newBTCLightClient(lightBlock BTCLightBlock) BTCLightClient {
+func NewBTCLightClient(lightBlock BTCLightBlock) BTCLightClient {
 	return BTCLightClient{
 		latestBlock: lightBlock,
 	}
@@ -28,4 +28,13 @@ func newBTCLightClient(lightBlock BTCLightBlock) BTCLightClient {
 
 // TODO: rename this one for more sense in our context
 func (btclc BTCLightClient) updateLightBlock(header BTCHeader) {
+
+}
+
+func NewBTCLightClientDefault() BTCLightClient {
+	return BTCLightClient{
+		latestBlock: BTCLightBlock{
+			Data: `Default Data`,
+		},
+	}
 }

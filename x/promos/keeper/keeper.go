@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"context"
+	// "context"
 	"fmt"
 
 	"cosmossdk.io/core/store"
@@ -9,13 +9,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	bctlc "promos/x/promos/btclightclient"
+	btclc "promos/x/promos/btclightclient"
 	"promos/x/promos/types"
 )
 
 type (
 	Keeper struct {
-		lightclient  bctlc.BTCLightClient
+		lightclient  btclc.BTCLightClient
 		cdc          codec.BinaryCodec
 		storeService store.KVStoreService
 		logger       log.Logger
@@ -38,6 +38,7 @@ func NewKeeper(
 	}
 
 	return Keeper{
+		lightclient:  btclc.NewBTCLightClientDefault(),
 		cdc:          cdc,
 		storeService: storeService,
 		authority:    authority,
@@ -54,6 +55,3 @@ func (k Keeper) GetAuthority() string {
 func (k Keeper) Logger() log.Logger {
 	return k.logger.With("module", fmt.Sprintf("x/%s", types.ModuleName))
 }
-
-
-
